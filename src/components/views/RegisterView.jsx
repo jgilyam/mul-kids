@@ -13,15 +13,17 @@ export default function RegisterView() {
   const [isLoading, setIsLoading] = useState(false)
   const { register, validationError } = useUser()
 
+
+  const handleNameChange = (newName) => {
+    setName(newName)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('[RegisterView] handleSubmit called, name:', name)
     setIsLoading(true)
     try {
       await register(name)
-      console.log('[RegisterView] register completed successfully')
     } catch (error) {
-      console.error('[RegisterView] register failed:', error)
     }
     setIsLoading(false)
   }
@@ -37,7 +39,7 @@ export default function RegisterView() {
             label="Tu nombre"
             type="text"
             value={name}
-            onChange={setName}
+            onChange={handleNameChange}
             error={validationError}
             autoFocus
           />
