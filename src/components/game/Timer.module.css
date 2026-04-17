@@ -1,0 +1,31 @@
+.timer {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 80px;
+  transition: all var(--transition-fast);
+}
+
+.green {
+  color: #166534;
+  background-color: #f0fdf4;
+}
+
+.yellow {
+  color: #854d0e;
+  background-color: #fefce8;
+}
+
+.red {
+  color: #991b1b;
+  background-color: #fef2f2;
+}
+
+@media (min-width: 768px) {
+  .timer {
+    font-size: 2rem;
+  }
+}

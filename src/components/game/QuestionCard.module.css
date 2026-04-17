@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.progress {
+  width: 100%;
+}
+
+.progressLabel {
+  font-size: 18px;
+  font-weight: 600;
+  color: #475569;
+  margin: 0 0 0.75rem 0;
+  text-align: center;
+}
+
+.question {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 2rem 0;
+  text-align: center;
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .question {
+    font-size: 36px;
+  }
+
+  .progressLabel {
+    font-size: 16px;
+  }
+}
