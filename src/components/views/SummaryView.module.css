@@ -18,8 +18,8 @@
 
 .tableName {
   font-size: 24px;
-  font-weight: 700;
-  color: #475569;
+  font-weight: 800;
+  color: var(--color-text-muted);
   margin: 0;
 }
 
@@ -34,28 +34,28 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 1.5rem;
-  background-color: #f8fafc;
-  border-radius: 12px;
+  background-color: var(--color-primary-light);
+  border-radius: 1rem;
   text-align: center;
 }
 
 .statLabel {
   font-size: 14px;
-  font-weight: 600;
-  color: #64748b;
+  font-weight: 700;
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .statValue {
   font-size: 32px;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: var(--color-text-heading);
 }
 
 .statDetail {
   font-size: 14px;
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 .badges {
