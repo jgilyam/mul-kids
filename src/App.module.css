@@ -1,0 +1,17 @@
+.main {
+  padding: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 0.75rem;
+    padding-bottom: 4rem; /* space for fixed tab nav */
+  }
+}
+
+@media (max-width: 640px) and (max-height: 500px) {
+  .main {
+    padding: 0.5rem;
+    padding-bottom: 0;
+  }
+}

@@ -7,6 +7,7 @@ import HistoryView from './components/views/HistoryView'
 import ProfileView from './components/views/ProfileView'
 import Header from './components/layout/Header'
 import TabNavigation from './components/layout/TabNavigation'
+import styles from './App.module.css'
 
 function App() {
   const { user, isRegistered } = useUser()
@@ -26,7 +27,7 @@ function App() {
   return (
     <div>
       <Header userName={user?.name} />
-      <main style={{ padding: '1.5rem' }}>
+      <main className={styles.main}>
         {activeTab === 'play' && <GameView />}
         {activeTab === 'progress' && <ProgressView />}
         {activeTab === 'history' && <HistoryView />}

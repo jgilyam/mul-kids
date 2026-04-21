@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useCallback } from 'react'
 import { useGame } from '../../hooks/useGame'
 import TableSelector from '../game/TableSelector'
 import QuestionCard from '../game/QuestionCard'
@@ -46,9 +46,9 @@ export default function GameView() {
     submitAnswer(answer)
   }
 
-  const handleContinue = () => {
+  const handleContinue = useCallback(() => {
     nextQuestion()
-  }
+  }, [nextQuestion])
 
   const handlePlayAgain = () => {
     reset()
@@ -81,13 +81,14 @@ export default function GameView() {
           </div>
 
           <QuestionCard
+            key={currentQuestion.id}
             table={currentQuestion.table}
             multiplier={currentQuestion.multiplier}
             questionNumber={currentIndex + 1}
             totalQuestions={totalQuestions}
           />
 
-          <AnswerInput onSubmit={handleAnswerSubmit} />
+          <AnswerInput key={currentIndex} onSubmit={handleAnswerSubmit} />
         </div>
       </div>
     )

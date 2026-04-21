@@ -44,6 +44,10 @@ export const useGameStore = create((set, get) => ({
    */
   submitAnswer: (userAnswer) => {
     const state = get()
+
+    // Guard: only accept answers during playing phase
+    if (state.phase !== 'playing') return
+
     const question = state.questions[state.currentQuestionIndex]
     const timeToAnswer = Date.now() - state.questionStartTime
     const isCorrect = gameService.validateAnswer(userAnswer, question.correctAnswer)
