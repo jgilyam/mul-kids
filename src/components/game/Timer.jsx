@@ -13,16 +13,18 @@ const Timer = forwardRef(function Timer({ isRunning, onTick }, ref) {
   const [elapsed, setElapsed] = useState(0)
   const intervalRef = useRef(null)
   const startTimeRef = useRef(null)
+  const onTickRef = useRef(onTick)
+  onTickRef.current = onTick
 
   useEffect(() => {
     if (isRunning) {
-      startTimeRef.current = Date.now() - elapsed
+      startTimeRef.current = Date.now()
+      setElapsed(0)
       intervalRef.current = setInterval(() => {
-        const now = Date.now()
-        const newElapsed = now - startTimeRef.current
+        const newElapsed = Date.now() - startTimeRef.current
         setElapsed(newElapsed)
-        if (onTick) {
-          onTick(newElapsed)
+        if (onTickRef.current) {
+          onTickRef.current(newElapsed)
         }
       }, 100)
     } else {
@@ -37,14 +39,17 @@ const Timer = forwardRef(function Timer({ isRunning, onTick }, ref) {
         clearInterval(intervalRef.current)
       }
     }
-  }, [isRunning, onTick, elapsed])
+  }, [isRunning])
 
   // Expose methods to parent via ref
   useImperativeHandle(ref, () => ({
-    getElapsed: () => elapsed,
+    getElapsed: () => {
+      if (!startTimeRef.current) return 0
+      return Date.now() - startTimeRef.current
+    },
     reset: () => {
+      startTimeRef.current = Date.now()
       setElapsed(0)
-      startTimeRef.current = null
     }
   }))
 
