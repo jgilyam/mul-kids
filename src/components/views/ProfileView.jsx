@@ -3,12 +3,13 @@ import { useRecommendation } from '../../hooks/useRecommendation'
 import { useHistory } from '../../hooks/useHistory'
 import Card from '../ui/Card'
 import Badge from '../ui/Badge'
+import Button from '../ui/Button'
 
 /**
  * Profile view: user info, stats, and table recommendation.
  */
 export default function ProfileView() {
-  const { user } = useUser()
+  const { user, clearUser } = useUser()
   const { totalSessions } = useHistory()
   const { recommendedTable, hasEnoughData, performanceScores } = useRecommendation()
 
@@ -41,6 +42,12 @@ export default function ProfileView() {
             <span className="stat-value">{totalSessions}</span>
           </div>
         </div>
+      </Card>
+
+      <Card title="Cuenta">
+        <Button variant="ghost" onClick={clearUser}>
+          Cambiar Nombre
+        </Button>
       </Card>
 
       <Card title="Tabla Recomendada">

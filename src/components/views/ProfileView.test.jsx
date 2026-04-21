@@ -1,5 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import ProfileView from './ProfileView'
 import { useUserStore } from '../../store/userStore'
 import { useHistoryStore } from '../../store/historyStore'
@@ -35,5 +36,21 @@ describe('ProfileView', () => {
     useUserStore.setState({ user: null })
     render(<ProfileView />)
     expect(screen.queryByText(/maría/i)).not.toBeInTheDocument()
+  })
+
+  it('should show change name button', () => {
+    render(<ProfileView />)
+    expect(screen.getByRole('button', { name: /cambiar nombre/i })).toBeInTheDocument()
+  })
+
+  it('should call clearUser when change name button clicked', async () => {
+    const user = userEvent.setup()
+    const clearUser = vi.fn()
+    useUserStore.setState({ clearUser })
+
+    render(<ProfileView />)
+    await user.click(screen.getByRole('button', { name: /cambiar nombre/i }))
+
+    expect(clearUser).toHaveBeenCalled()
   })
 })
