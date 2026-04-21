@@ -1,3 +1,5 @@
+import styles from './ChartWrapper.module.css'
+
 /**
  * Shared wrapper for Chart.js components.
  * Provides responsive sizing, loading states, and accessible data table fallback.
@@ -11,19 +13,19 @@
  */
 export default function ChartWrapper({ children, title, isLoading = false, data, className = '' }) {
   return (
-    <div className={`chart-wrapper ${className}`} role="img" aria-label={title}>
+    <div className={`${styles.wrapper} ${className}`} role="img" aria-label={title}>
       {isLoading && (
-        <div className="chart-loading" aria-live="polite">
+        <div className={styles.loading} aria-live="polite">
           Cargando gráfico...
         </div>
       )}
       {!isLoading && (
         <>
-          <div className="chart-canvas" aria-hidden="true">
+          <div className={styles.canvas} aria-hidden="true">
             {children}
           </div>
           {data && data.length > 0 && (
-            <details className="chart-data-table">
+            <details className={styles.dataTable}>
               <summary>Ver datos en tabla</summary>
               <table>
                 <tbody>

@@ -4,6 +4,7 @@ import { useHistory } from '../../hooks/useHistory'
 import Card from '../ui/Card'
 import Badge from '../ui/Badge'
 import Button from '../ui/Button'
+import styles from './ProfileView.module.css'
 
 /**
  * Profile view: user info, stats, and table recommendation.
@@ -15,44 +16,36 @@ export default function ProfileView() {
 
   if (!user) {
     return (
-      <div className="profile-view">
+      <div className={styles.container}>
         <Card title="Perfil">
-          <p>No hay usuario registrado.</p>
+          <p className={styles.empty}>No hay usuario registrado.</p>
         </Card>
       </div>
     )
   }
 
   return (
-    <div className="profile-view">
+    <div className={styles.container}>
       <Card title="Perfil">
-        <div className="user-info">
-          <h2>{user.name}</h2>
-          <p className="user-id">ID: {user.id}</p>
-          <p className="user-since">
+        <div className={styles.userInfo}>
+          <h2 className={styles.userName}>{user.name}</h2>
+          <p className={styles.userId}>ID: {user.id}</p>
+          <p className={styles.userSince}>
             Miembro desde: {new Date(user.createdAt).toLocaleDateString('es-MX')}
           </p>
         </div>
       </Card>
 
       <Card title="Estadísticas Generales">
-        <div className="stats-list">
-          <div className="stat-row">
-            <span className="stat-label">Total de Sesiones</span>
-            <span className="stat-value">{totalSessions}</span>
-          </div>
+        <div className={styles.statRow}>
+          <span className={styles.statLabel}>Total de Sesiones</span>
+          <span className={styles.statValue}>{totalSessions}</span>
         </div>
-      </Card>
-
-      <Card title="Cuenta">
-        <Button variant="ghost" onClick={clearUser}>
-          Cambiar Nombre
-        </Button>
       </Card>
 
       <Card title="Tabla Recomendada">
         {hasEnoughData ? (
-          <div className="recommendation">
+          <div className={styles.recommendation}>
             <Badge variant="info">Tabla del {recommendedTable}</Badge>
             <p>Practica esta tabla para mejorar tu velocidad y precisión.</p>
             {Object.entries(performanceScores)
@@ -76,6 +69,14 @@ export default function ProfileView() {
         ) : (
           <p>Completa algunas sesiones para recibir recomendaciones personalizadas.</p>
         )}
+      </Card>
+
+      <Card title="Cuenta">
+        <div className={styles.accountActions}>
+          <Button variant="ghost" onClick={clearUser}>
+            Cambiar Nombre
+          </Button>
+        </div>
       </Card>
     </div>
   )

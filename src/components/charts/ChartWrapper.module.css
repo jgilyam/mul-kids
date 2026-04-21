@@ -1,0 +1,44 @@
+.wrapper {
+  width: 100%;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.canvas {
+  width: 100%;
+}
+
+.dataTable {
+  margin-top: 1rem;
+}
+
+.dataTable summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 0.875rem;
+}
+
+.dataTable table {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.dataTable td {
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.dataTable tr:last-child td {
+  border-bottom: none;
+}

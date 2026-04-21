@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dateGroup {
+  margin-bottom: 1.5rem;
+}
+
+.dateGroup:last-child {
+  margin-bottom: 0;
+}
+
+.dateTitle {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text-heading);
+  margin: 0 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.sessionList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sessionCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--color-primary-light);
+  border-radius: 0.75rem;
+  transition: background var(--transition-fast);
+}
+
+.sessionInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sessionTable {
+  font-weight: 700;
+  color: var(--color-text-heading);
+}
+
+.sessionScore {
+  font-weight: 800;
+  color: var(--color-primary);
+  font-size: 1.125rem;
+}
+
+.sessionTime {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 2rem 0;
+}

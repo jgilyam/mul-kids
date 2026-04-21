@@ -34,8 +34,8 @@ export default function WeeklyProgressChart({ data }) {
         type: 'bar',
         label: 'Sesiones',
         data: data.map((d) => d.sessions),
-        backgroundColor: 'rgba(99, 102, 241, 0.5)',
-        borderColor: 'rgba(99, 102, 241, 1)',
+        backgroundColor: 'rgba(139, 92, 246, 0.5)',
+        borderColor: 'rgba(139, 92, 246, 1)',
         borderWidth: 1,
         yAxisID: 'y'
       },
